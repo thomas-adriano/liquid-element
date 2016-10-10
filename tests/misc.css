@@ -1,0 +1,18 @@
+html, body {
+	height: 100%;
+}
+
+.base-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.base-container__navbar {
+	flex: 1 0 70px;
+	background-color: red;
+}
+
+.base-container__content {
+	flex: 999999 0 auto;
+	background-color: black;
+}

@@ -1,0 +1,11 @@
+#liquid-element {
+    background-color: rgba(100, 150, 200, 1);
+}
+
+.duchbag {
+    background-color: rgba(100, 150, 200, 0.50);
+}
+
+.off {
+	display: none;
+}
