@@ -1,8 +1,8 @@
 {
   "name": "liquid-container",
   "version": "0.0.1",
-  "description": "A container that fills the available viewport space.",
-  "main": "liquid-container.js",
+  "description": "A HTML element that fills the available viewport space.",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo no tests yet",
     "build": "webpack --progress --colors",
@@ -11,7 +11,7 @@
   "keywords": [
     "css",
     "style",
-    "container",
+    "liquid",
     "viewport"
   ],
   "devDependencies": {
