@@ -1,5 +1,5 @@
 {
-  "name": "liquid-container",
+  "name": "liquid-element",
   "version": "0.0.1",
   "description": "A HTML element that fills the available viewport space.",
   "main": "src/main.js",
