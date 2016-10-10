@@ -1,29 +1,18 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const plugins = [
-    new HtmlWebpackPlugin({
-        filename: 'top.html',
-        template: 'tests/top.html',
-        hash: true,
-    }),
-    new HtmlWebpackPlugin({
-        filename: 'center.html',
-        template: 'tests/center.html',
-        hash: true,
-    }),
-    new HtmlWebpackPlugin({
-        filename: 'bottom.html',
-        template: 'tests/bottom.html',
-        hash: true,
-    }),
-    new HtmlWebpackPlugin({
-        filename: 'misc.html',
-        template: 'tests/misc.html',
-        hash: true,
-    })
+const prod = process.env.npm_lifecycle_event === 'dist';
+const dev = process.env.npm_lifecycle_event === 'build' || process.env.npm_lifecycle_event === 'live';
+
+const prodPlugins = [
+    new webpack.optimize.DedupePlugin(), //garante que nao existam copias de um mesmo modulo.
+    new webpack.optimize.OccurrenceOrderPlugin(), //faz com que modulos mais utilizados recebam os menores ids. Segundo documentacao isso resulta em mais performance (runtime) e menor tamanho de arquivo dist
+    new webpack.optimize.UglifyJsPlugin(), //minifier e uglyfier
 ];
+
+const commonPlugins = [];
+
+const plugins = prod ? commonPlugins.concat(prodPlugins) : commonPlugins;
 
 const loaders = [{
     test: /\.html$/,
@@ -39,7 +28,7 @@ module.exports = {
     entry: "./src/main",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "liquid-element.min.js"
     },
     module: {
         loaders: loaders,
