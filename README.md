@@ -1,2 +1,2 @@
-# liquid-container
-A html container that fills the space available.
+# liquid-element
+A html element that fills the available space.
