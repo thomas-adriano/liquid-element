@@ -1,6 +1,6 @@
 import optimizedResizeEvent from 'optimized-resize-event';
 
-main();
+document.addEventListener('DOMContentLoaded', main, false);
 
 function main() {
     const liquidElement = document.getElementById('liquid-element');
@@ -53,7 +53,6 @@ function main() {
     }
 
     function getSiblingsRefereneHeight(el, nextFunc, heightFunc) {
-        let res = [];
         let sibling = nextFunc(el);
         let actualReferenceHeight;
         let prevReferenceHeight;
@@ -63,7 +62,8 @@ function main() {
             actualReferenceHeight = heightFunc(sibling);
             let cs = window.getComputedStyle(sibling, null);
             let pos = cs.getPropertyValue('position');
-            if (pos !== 'absolute' && pos !== 'fixed') {
+            let display = cs.getPropertyValue('display');
+            if (pos !== 'absolute' && pos !== 'fixed' && display !== 'none') {
                 if (!prevReferenceHeight || actualReferenceHeight > prevReferenceHeight) {
                     referenceHeight = actualReferenceHeight;
                 }
